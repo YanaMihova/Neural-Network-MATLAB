@@ -1,0 +1,42 @@
+%Close all open figures
+close all
+
+%Clear the workspace
+clear
+
+%Clear the command window
+clc
+
+load('\\dl-stud1\users\D35\u1836303\Desktop\after julkata\4 fold\transpose 4\workspace4.mat')
+
+
+ 
+net = feedforwardnet(10, 'trainlm');
+net = configure(net, x4, t4);
+y1 = net(x4);
+
+perf1 = perform(net, y1, t4);
+
+
+figure('units','normalized','outerposition',[0 0 1 1])
+subplot(2,2,1)
+plot(x4)
+title('Input')
+subplot(2,2,2)
+plot(t4)
+title('Target')
+subplot(2,2,3)
+plot(x4, t4, x4, y1, 'o')
+title('Non-trained output plotted against the target')
+legend('Target', 'Output')
+
+
+net = train(net,x4,t4);
+y2 = net(x4test);
+perf2 = perform(net,y2,t4test);
+
+
+subplot(2,2,4)
+plot(x4, t4, t4test, y2, 'o')
+title('Trained output plotted against the target')
+legend('Target', 'Output')

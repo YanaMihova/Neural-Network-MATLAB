@@ -1,0 +1,12 @@
+actual_value = y2;
+target_value = testT;
+
+%dif=(abs(target_value - actual_value));
+%dell=(dif/target_value)*100;
+%accuracy2 = 100 - dell; 
+
+accuracy1 = 100 - (((abs(target_value - actual_value))./target_value)*100);
+average1 = mean(accuracy1);
+
+%accuracy =100 -(((abs(dif))/target_value)*100);
+%accuracy = 100 -((abs(target_value - actual_value)))/target_value*100;
